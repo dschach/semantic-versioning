@@ -12,37 +12,48 @@ Based on Angular rules: https://github.com/angular/angular/blob/main/CONTRIBUTIN
 
 ### Type
 
-Must be one of the following:
+Must be one of the following (separated by version increment - see below)
 
-- build: Changes that affect the build system or external dependencies (example scopes: gulp, broccoli, npm). (No-Release)
-- chore: Similar to build; usually refers to bot updates.
-- ci: Changes to our CI configuration files and scripts (examples: CircleCi, SauceLabs) (No-Release)
-- docs: Documentation only changes (Patch)
-- feat: A new feature (Minor)
-- fix: A bug fix (Patch)
-- perf: A code change that improves performance (Patch)
-- refactor: A code change that neither fixes a bug nor adds a feature (Patch)
-- revert: Any reversion of a PR/commit. This should not affect the version number. If this is a reversion across releases, then it should be noted as a feat or chore. (No-Release)
-- test: Adding missing tests or correcting existing tests (Minor)
+Major
+
+- A breaking change, indicated by any of the other types followed by `!`. (Example: feat(api)!: deprecate a method)
+
+Minor
+
+- `feat`: A new feature (Minor)
+
+Patch
+
+- `fix`: A bug fix (Patch)
+- `perf`: A code change that improves performance (Patch)
+- `test`: Adding missing tests or correcting existing tests (Patch) - `refactor`: A code change that neither fixes a bug nor adds a feature (Patch)
+
+No-Release
+
+- `build`: Changes that affect the build system or external dependencies (example scopes: gulp, broccoli, npm). (No-Release)
+- `chore`: Similar to build; usually refers to bot updates or creating a release. This generally won't show up in release notes. (No-Release)
+- `ci`: Changes to CI configuration files and scripts (examples: CircleCi, SauceLabs) (No-Release)
+- `docs`: Documentation only changes (No-Release)
+- `revert`: Any reversion of a PR/commit. This should not affect the version number. If this is a reversion across releases, then it should be noted as a feat or chore. (No-Release)
 
 ### Scope
 
 Here are some examples, but you can choose your own:
 
-- npm: Updated npm packages & dependencies
-- github-actions: Updated actions versions
-- packaging: updates for releasing a new package version that are not the creation of the version itself
-- scripts: Updated scripts
-- core: Central functionality
-- API: Custom APIs or integrations. Can also be for updating API versions of Salesforce metadata on a new release.
-- localization: translations
-- UX: layouts and general user experience
-- style: code changes that look nicer (fixing whitespace) but do nothing else
-- (package name): adding or configuring a vscode extension, npm module, etc.
-- changelog: updating the changelog
-- no-release: Will not be included in determining the version change (No-Release)
-- ApexDox: Updates to pages included in, or code comment references to, ApexDox. This should usually have a commit title docs(ApexDox): <whatever was done>
-- README: Updating the project README
+- `npm`: Updated npm packages & dependencies
+- `actions`: Updated GitHub actions versions
+- `packaging`: updates for releasing a new package version that are not the creation of the version itself
+- `scripts`: Updated scripts
+- `core`: Central functionality
+- `API`: Custom APIs or integrations. Can also be for updating API versions of Salesforce metadata on a new release.
+- `localization`: translations
+- `UX`: layouts and general user experience
+- `style`: code changes that look nicer (fixing whitespace) but do nothing else
+- `(package name)`: adding or configuring a vscode extension, npm module, etc.
+- `changelog`: updating the changelog
+- `no-release`: Will not be included in determining the version change (No-Release)
+- `ApexDox`: Updates to pages included in, or code comment references to, ApexDox. This should usually have a commit title docs(ApexDox): <whatever was done>
+- `README`: Updating the project README
 
 ### Behavior
 
@@ -104,8 +115,31 @@ a clear description of the reason for reverting the commit message.
 
 ## SemVar changes
 
-## Semantic-Release Plugins
+# Changelog/Release Plugins & Packages
 
-While the package comes bundled with a few plugins, these are the ones we will use
+## Release-Please
 
-###
+This one is by Google, and while I think it is the most difficult to set up and does not have quite the number of customizations I would like, it has a huge advantage: It allows you to see the in-progress release notes every time you run the command to update the release PR.
+
+The biggest downside for me is that until the GitHub action is updated to include Salesforce releases, it has to be installed globally using npm and run from the command line. But once that is fixed, it will be great!
+
+I have included a sample config file [here](release-please-config.json).
+
+And my GitHub Actions file is [here](/.github/workflows/release.yml).
+
+Another huge advantage is that it allows for monorepos - so you can have multiple package directories in a single project. For SFDX, this means that you can modularize your org in one repo and the release notes should handle all the changes across each package, each with its own version number!
+
+## [Semantic-Release Plugin](https://semantic-release.gitbook.io/semantic-release/)
+
+This package does a great job of automating release creation. It bundles release notes and npm/GitHub packaging together. I like that it is flexible on which of the [Angular Commit Message Conventions](https://github.com/angular/angular/blob/main/CONTRIBUTING.md#-commit-message-format#type) it allows. As with other plugins, the scope is completely free-form, so don't worry about having to adhere to Angular's scopes.
+
+While the package comes bundled with a few plugins, these are the ones we will use:
+
+- @semantic-release/commit-analyzer
+- @semantic-release/github
+- @semantic-release/release-notes-generator
+- semantic-release
+
+- @semantic-release/changelog
+- @semantic-release/git
+- Note: The first four are bundled together in semantic-release, but I have included them for completeness.
