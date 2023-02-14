@@ -22,7 +22,7 @@ Must be one of the following:
 - fix: A bug fix (Patch)
 - perf: A code change that improves performance (Patch)
 - refactor: A code change that neither fixes a bug nor adds a feature (Patch)
-- revert: Any reversion of a PR/commit. (Patch, if the original commit is in a different release)
+- revert: Any reversion of a PR/commit. This should not affect the version number. If this is a reversion across releases, then it should be noted as a feat or chore. (No-Release)
 - test: Adding missing tests or correcting existing tests (Minor)
 
 ### Scope
