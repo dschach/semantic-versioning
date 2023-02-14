@@ -133,6 +133,8 @@ Another huge advantage is that it allows for monorepos - so you can have multipl
 
 This package does a great job of automating release creation. It bundles release notes and npm/GitHub packaging together. I like that it is flexible on which of the [Angular Commit Message Conventions](https://github.com/angular/angular/blob/main/CONTRIBUTING.md#-commit-message-format#type) it allows. As with other plugins, the scope is completely free-form, so don't worry about having to adhere to Angular's scopes.
 
+I have included my release configuration file [here](/.releaserc).
+
 While the package comes bundled with a few plugins, these are the ones we will use:
 
 - @semantic-release/commit-analyzer
