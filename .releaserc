@@ -1,5 +1,4 @@
 {
-	"dryRun": true,
 	"branches": [
 		{
 			"name": "main"
@@ -8,7 +7,8 @@
 			"name": "prerelease",
 			"channel": "pre",
 			"prerelease": true
-		}
+		},
+		"feature/semantic-release"
 	],
 	"repository": "https://github.com/dschach/semantic-versioning",
 	"preset": "angular",
@@ -68,6 +68,10 @@
 						"release": "minor"
 					},
 					{
+						"type": "revert",
+						"release": false
+					},
+					{
 						"type": "chore",
 						"release": false
 					}
@@ -80,7 +84,13 @@
 				}
 			}
 		],
-		"@semantic-release/release-notes-generator",
+		[
+			"@semantic-release/release-notes-generator",
+			{
+				"linkCompare": true,
+				"preset": "angular"
+			}
+		],
 		[
 			"@semantic-release/changelog",
 			{
@@ -100,6 +110,5 @@
 			}
 		]
 	],
-	"ci": false,
-	"debug": true
+	"dryRun": true
 }
