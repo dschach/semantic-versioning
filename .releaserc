@@ -41,7 +41,7 @@
 					},
 					{
 						"type": "docs",
-						"release": "patch"
+						"release": false
 					},
 					{
 						"type": "feat",
@@ -65,7 +65,7 @@
 					},
 					{
 						"type": "test",
-						"release": "minor"
+						"release": "patch"
 					},
 					{
 						"type": "revert",
