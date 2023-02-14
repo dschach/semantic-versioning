@@ -14,35 +14,35 @@ Based on Angular rules: https://github.com/angular/angular/blob/main/CONTRIBUTIN
 
 Must be one of the following:
 
-- build: Changes that affect the build system or external dependencies (example scopes: gulp, broccoli, npm). (No-Release)
-- chore: Similar to build; usually refers to bot updates.
-- ci: Changes to our CI configuration files and scripts (examples: CircleCi, SauceLabs) (No-Release)
-- docs: Documentation only changes (Patch)
-- feat: A new feature (Minor)
-- fix: A bug fix (Patch)
-- perf: A code change that improves performance (Patch)
-- refactor: A code change that neither fixes a bug nor adds a feature (Patch)
-- revert: Any reversion of a PR/commit. (Patch, if the original commit is in a different release)
-- test: Adding missing tests or correcting existing tests (Minor)
+- `build`: Changes that affect the build system or external dependencies (example scopes: gulp, broccoli, npm). (No-Release)
+- `chore`: Similar to build; usually refers to bot updates.
+- `ci`: Changes to our CI configuration files and scripts (examples: CircleCi, SauceLabs) (No-Release)
+- `docs`: Documentation only changes (No-Release)
+- `feat`: A new feature (Minor)
+- `fix`: A bug fix (Patch)
+- `perf`: A code change that improves performance (Patch)
+- `refactor`: A code change that neither fixes a bug nor adds a feature (Patch)
+- `revert`: Any reversion of a PR/commit. This should not affect the version number. If this is a reversion across releases, then it should be noted as a feat or chore. (No-Release)
+- `test`: Adding missing tests or correcting existing tests (Patch)
 
 ### Scope
 
 Here are some examples, but you can choose your own:
 
-- npm: Updated npm packages & dependencies
-- github-actions: Updated actions versions
-- packaging: updates for releasing a new package version that are not the creation of the version itself
-- scripts: Updated scripts
-- core: Central functionality
-- API: Custom APIs or integrations. Can also be for updating API versions of Salesforce metadata on a new release.
-- localization: translations
-- UX: layouts and general user experience
-- style: code changes that look nicer (fixing whitespace) but do nothing else
-- (package name): adding or configuring a vscode extension, npm module, etc.
-- changelog: updating the changelog
-- no-release: Will not be included in determining the version change (No-Release)
-- ApexDox: Updates to pages included in, or code comment references to, ApexDox. This should usually have a commit title docs(ApexDox): <whatever was done>
-- README: Updating the project README
+- `npm`: Updated npm packages & dependencies
+- `actions`: Updated GitHub actions versions
+- `packaging`: updates for releasing a new package version that are not the creation of the version itself
+- `scripts`: Updated scripts
+- `core`: Central functionality
+- `API`: Custom APIs or integrations. Can also be for updating API versions of Salesforce metadata on a new release.
+- `localization`: translations
+- `UX`: layouts and general user experience
+- `style`: code changes that look nicer (fixing whitespace) but do nothing else
+- `(package name)`: adding or configuring a vscode extension, npm module, etc.
+- `changelog`: updating the changelog
+- `no-release`: Will not be included in determining the version change (No-Release)
+- `ApexDox`: Updates to pages included in, or code comment references to, ApexDox. This should usually have a commit title docs(ApexDox): <whatever was done>
+- `README`: Updating the project README
 
 ### Behavior
 
