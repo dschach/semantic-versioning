@@ -30,7 +30,7 @@ Patch
 
 No-Release
 
-- `build`: Changes that affect the build system or external dependencies (example scopes: gulp, broccoli, npm). (No-Release)
+- `build`: Changes that affect the build system or external dependencies (example scopes: gulp, broccoli, npm, actions). (No-Release)
 - `chore`: Similar to build; usually refers to bot updates or creating a release. This generally won't show up in release notes. (No-Release)
 - `ci`: Changes to CI configuration files and scripts (examples: CircleCi, SauceLabs) (No-Release)
 - `docs`: Documentation only changes (No-Release)
@@ -47,13 +47,14 @@ Here are some examples, but you can choose your own:
 - `core`: Central functionality
 - `API`: Custom APIs or integrations. Can also be for updating API versions of Salesforce metadata on a new release.
 - `localization`: translations
+- `security`: If you track profiles and permissions in your Salesforce pipeline, this may be an appropriate scope
 - `UX`: layouts and general user experience
 - `style`: code changes that look nicer (fixing whitespace) but do nothing else
 - `(package name)`: adding or configuring a vscode extension, npm module, etc.
 - `changelog`: updating the changelog
 - `no-release`: Will not be included in determining the version change (No-Release)
-- `ApexDox`: Updates to pages included in, or code comment references to, ApexDox. This should usually have a commit title docs(ApexDox): <whatever was done>
-- `README`: Updating the project README
+- `ApexDox`: Updates to pages included in, or code comment references to, ApexDox. This should usually have a commit title `docs(ApexDox): <whatever was done>`
+- `README`: Updating the project README. For updating instructions, use `docs(README)` and if you're running a script to update a release ID for a Salesforce package version, that's `build(README)` or `chore(README)`.
 
 ### Behavior
 
@@ -61,6 +62,7 @@ Here are some examples, but you can choose your own:
   This usually happens only for breaking changes
 - Minor: Update the second number
 - Patch: Update the third number
+- No-Patch: No new release number needed
 
 ### Summary
 
@@ -117,13 +119,13 @@ a clear description of the reason for reverting the commit message.
 
 # Changelog/Release Plugins & Packages
 
-## Release-Please
+## [Release-Please (by Google)](https://github.com/googleapis/release-please)
 
 This one is by Google, and while I think it is the most difficult to set up and does not have quite the number of customizations I would like, it has a huge advantage: It allows you to see the in-progress release notes every time you run the command to update the release PR.
 
-The biggest downside for me is that until the GitHub action is updated to include Salesforce releases, it has to be installed globally using npm and run from the command line. But once that is fixed, it will be great!
+I have included a sample config file [here](release-please-config.json). You will need to bootstrap your repository before using this for the first time, and then please feel free to take my sample config file and use parts of that.
 
-I have included a sample config file [here](release-please-config.json).
+### [Release Please Action](https://github.com/google-github-actions/release-please-action)
 
 And my GitHub Actions file is [here](/.github/workflows/release.yml).
 
