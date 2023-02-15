@@ -30,9 +30,9 @@ Patch
 
 No-Release
 
-- `build`: Changes that affect the build system or external dependencies (example scopes: gulp, broccoli, npm, actions). (No-Release)
+- `build`: Changes that affect the build system, actions, or external dependencies (example scopes: gulp, broccoli, npm, actions). (No-Release)
+- `ci`: Changes to CI configuration files and scripts (examples: CircleCi, SauceLabs). Unless you use an automatic CI system, don't use this type. (No-Release)
 - `chore`: Similar to build; usually refers to bot updates or creating a release. This generally won't show up in release notes. (No-Release)
-- `ci`: Changes to CI configuration files and scripts (examples: CircleCi, SauceLabs) (No-Release)
 - `docs`: Documentation only changes (No-Release)
 - `revert`: Any reversion of a PR/commit. This should not affect the version number. If this is a reversion across releases, then it should be noted as a feat or chore. (No-Release)
 
