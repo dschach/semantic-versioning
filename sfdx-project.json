@@ -1,0 +1,11 @@
+{
+	"packageDirectories": [
+		{
+			"path": "force-app"
+		}
+	],
+	"name": "semantic-versioning",
+	"namespace": "",
+	"sfdcLoginUrl": "https://login.salesforce.com",
+	"sourceApiVersion": "56.0"
+}
