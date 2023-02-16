@@ -1,4 +1,4 @@
-# semantic-versioning for Salesforce projects
+# Semantic Versioning for Salesforce projects
 
 > This is not intended to be a catch-all README. It is intended for Salesforce projects, and will purposely exclude uploading anything to npm.
 
