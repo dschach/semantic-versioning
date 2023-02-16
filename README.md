@@ -125,11 +125,13 @@ This one is by Google, and while I think it is the most difficult to set up and 
 
 I have included a sample config file [here](release-please-config.json). You will need to bootstrap your repository before using this for the first time, and then please feel free to take my sample config file and use parts of that.
 
+Another huge advantage is that it allows for monorepos - so you can have multiple package directories in a single project. For SFDX, this means that you can modularize your org in one repo and the release notes should handle all the changes across each package, each with its own version number!
+
+Currently, my preferred way to use this (because I know it works) is to use the CLI via VSCode. However, I'm trying to get the action to work and to create a release.
+
 ### [Release Please Action](https://github.com/google-github-actions/release-please-action)
 
-And my GitHub Actions file is [here](/.github/workflows/release.yml).
-
-Another huge advantage is that it allows for monorepos - so you can have multiple package directories in a single project. For SFDX, this means that you can modularize your org in one repo and the release notes should handle all the changes across each package, each with its own version number!
+And my GitHub Actions file is [here](/.github/workflows/release.yml). You'll note that I made a personal access token and put it into the action. I don't know exactly how secure this is, so I assume that you'll want to put some security around who can close the Release Please PR (which should trigger a new Package/version).
 
 ## [Semantic-Release Plugin](https://semantic-release.gitbook.io/semantic-release/)
 
