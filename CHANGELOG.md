@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.1](https://github.com/dschach/semantic-versioning/compare/v1.1.0...v1.1.1) (2023-02-16)
+
+
+### Documentation
+
+* **README:** R-p drawbacks (double-entry) ([a9f49fb](https://github.com/dschach/semantic-versioning/commit/a9f49fbbb378dc7d29951cdbc91a3e2e32dfc8ac))
+
 ## [1.1.0](https://github.com/dschach/semantic-versioning/compare/v1.0.0...v1.1.0) (2023-02-16)
 
 

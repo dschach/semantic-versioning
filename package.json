@@ -1,6 +1,6 @@
 {
   "name": "semantic-versioning",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "private": true,
   "description": "David Schach's rules for semantic versioning",
   "scripts": {
