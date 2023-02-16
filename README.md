@@ -127,7 +127,7 @@ I have included a sample config file [here](release-please-config.json). You wil
 
 Another huge advantage is that it allows for monorepos - so you can have multiple package directories in a single project. For SFDX, this means that you can modularize your org in one repo and the release notes should handle all the changes across each package, each with its own version number!
 
-Currently, my preferred way to use this (because I know it works) is to use the CLI via VSCode. I can get the action to create a release, but I think it takes a manual run of the workflow for that to happen.
+Currently, my preferred way to use this (because I know it works) is to use the CLI via VSCode. I can get the action to create a release~~, but I think it takes a manual run of the workflow for that to happen~~ once I merge the release pull request.
 
 My biggest gripe with this tool is that if you use merge commits (not squash) then EVERY commit goes into the changelog. That's just plain annoying. It gives a double-entry for pull requests, so if a dependency i sautomatically updated, there's a line for the PR and for the commit in that PR. (Example: [PR #5](https://github.com/dschach/semantic-versioning/issues/5) as seen in [Version 1.1.0](https://github.com/dschach/semantic-versioning/releases/tag/v1.1.0))
 
