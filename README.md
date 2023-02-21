@@ -10,7 +10,7 @@ For more information, see https://github.com/semantic-release/semantic-release -
 
 Based on Angular rules: https://github.com/angular/angular/blob/main/CONTRIBUTING.md#-commit-message-format
 
-### Type
+### Type (MY IDEAL SETUP)
 
 Must be one of the following (separated by version increment - see below)
 
@@ -20,39 +20,45 @@ Major
 
 Minor
 
-- `feat`: A new feature (Minor)
+- `feat`: A new feature
 
 Patch
 
-- `fix`: A bug fix (Patch)
-- `perf`: A code change that improves performance (Patch)
-- `test`: Adding missing tests or correcting existing tests (Patch) - `refactor`: A code change that neither fixes a bug nor adds a feature (Patch)
+- `fix`: A bug fix
+- `perf`: A code change that improves performance
+- `test`: Adding missing tests or correcting existing tests
+- `refactor`: A code change that neither fixes a bug nor adds a feature
 
-No-Release
+"No-Release"
 
-- `build`: Changes that affect the build system, actions, or external dependencies (example scopes: gulp, broccoli, npm, actions). (No-Release)
-- `ci`: Changes to CI configuration files and scripts (examples: CircleCi, SauceLabs). Unless you use an automatic CI system, don't use this type. (No-Release)
-- `chore`: Similar to build; usually refers to bot updates or creating a release. This generally won't show up in release notes. (No-Release)
-- `docs`: Documentation only changes (No-Release)
-- `revert`: Any reversion of a PR/commit. This should not affect the version number. If this is a reversion across releases, then it should be noted as a feat or chore. (No-Release)
+- `build`: Changes that affect the build system, actions, or external dependencies (example scopes: gulp, broccoli, npm, actions).
+- `ci`: Changes to CI configuration files and scripts (examples: CircleCi, SauceLabs). Unless you use an automatic CI system, don't use this type.
+- `chore`: Similar to build; usually refers to bot updates or creating a release. This sometimes won't show up in release notes.
+- `docs`: Documentation only changes
+- `revert`: Any reversion of a PR/commit. This should not affect the version number. If this is a reversion across releases, then it should be noted as a feat or chore.
+
+While these will often result in a patch change (See Release-Please below), I see some conflicting advice in my research. Sure, updating outdated npm packages used for package development do not change the code in the Salesforce package itself, BUT they do affect how development proceeds in the company. And if people just want to wait until they have a "real" code change before releasing an ISV patch/version, then there's nothing wrong with working on documentation only until you have something to release. Sure, you'll have a long changelog, but that's why we break things into sections!
+
+So my conclusion is that "No-Release" is just a way of thinking about very minor changes that are, technically, a part of a company/org's metadata, and that metadata can be expanded to include documentation and build extensions, etc. I'm happy to be flexible on that.
 
 ### Scope
 
 Here are some examples, but you can choose your own:
 
-- `npm`: Updated npm packages & dependencies
-- `actions`: Updated GitHub actions versions
+- `npm`: Updated npm packages & dependencies (auto-scoped via dependabot file)
+- `actions`: Updated GitHub actions versions (auto-scoped via dependabot file)
 - `packaging`: updates for releasing a new package version that are not the creation of the version itself
 - `scripts`: Updated scripts
-- `core`: Central functionality
+- `core`: Central functionality (can often be omitted, as many changes will be 'core')
+- `tests`: Changes to Apex/Jest or other tests
 - `API`: Custom APIs or integrations. Can also be for updating API versions of Salesforce metadata on a new release.
 - `localization`: translations
 - `security`: If you track profiles and permissions in your Salesforce pipeline, this may be an appropriate scope
-- `UX`: layouts and general user experience
+- `ux`: layouts and general user experience
 - `style`: code changes that look nicer (fixing whitespace) but do nothing else
 - `(package name)`: adding or configuring a vscode extension, npm module, etc.
-- `changelog`: updating the changelog
-- `no-release`: Will not be included in determining the version change (No-Release)
+- `changelog`: updating the changelog (usually done automatically with a release)
+- `no-release`: Will not be included in determining the version change (currently not in Release-Please)
 - `ApexDox`: Updates to pages included in, or code comment references to, ApexDox. This should usually have a commit title `docs(ApexDox): <whatever was done>`
 - `README`: Updating the project README. For updating instructions, use `docs(README)` and if you're running a script to update a release ID for a Salesforce package version, that's `build(README)` or `chore(README)`.
 
@@ -129,25 +135,66 @@ Another huge advantage is that it allows for monorepos - so you can have multipl
 
 Currently, my preferred way to use this (because I know it works) is to use the CLI via VSCode. I can get the action to create a release~~, but I think it takes a manual run of the workflow for that to happen~~ once I merge the release pull request.
 
-My biggest gripe with this tool is that if you use merge commits (not squash) then EVERY commit goes into the changelog. That's just plain annoying. It gives a double-entry for pull requests, so if a dependency i sautomatically updated, there's a line for the PR and for the commit in that PR. (Example: [PR #5](https://github.com/dschach/semantic-versioning/issues/5) as seen in [Version 1.1.0](https://github.com/dschach/semantic-versioning/releases/tag/v1.1.0))
+My biggest gripe with this tool is that if you use merge commits (not squash) then EVERY commit goes into the changelog if it is titled properly. That's just plain annoying. It gives a double-entry for pull requests, so if a dependency i sautomatically updated, there's a line for the PR and for the commit in that PR. (Example: [PR #5](https://github.com/dschach/semantic-versioning/issues/5) as seen in [Version 1.1.0](https://github.com/dschach/semantic-versioning/releases/tag/v1.1.0)).
+
+I fully admit that the last point is ridiculous because I should just title commits properly only if I want them in the changelog.
+
+#### Release Types and Versioning Strategy
+
+I plan to learn to write an extension file to change the release types that trigger minor and patch releases so that release-please will look past just the basic types in its default strategy:
+
+- Major Change - breaking changes
+- Minor Change - `feat` type
+- Patch Change - `fix` and any other type
+
+I'm annoyed by this because I think that test changes should be a patch or minor change. I'm looking into how to set up Release-Please so I can include a node class in my sfdx projects to override the versioning strategy.
+
+#### Complex Commit Messages
+
+There is a line in the code that says
+
+```
+If someone wishes to aggregate multiple, complex commit messages into a single commit, they can include one or more `BEGIN_NESTED_COMMIT`/`END_NESTED_COMMIT` blocks into the body of the commit
+```
+
+and I think that it could be neat to work on this, as it's not well-documented.
 
 ### [Release Please Action](https://github.com/google-github-actions/release-please-action)
 
 And my GitHub Actions file is [here](/.github/workflows/release.yml). You'll note that I made a personal access token and put it into the action. I don't know exactly how secure this is, so I assume that you'll want to put some security around who can close the Release Please PR (which should trigger a new Package/version).
 
+### Use with Gearset
+
+Because Gearset does not Squash and Merge, you WILL have duplicate entries for some of your pull requests (meaning that you will have a line in the changelog for EVERY commit). So be careful on your commit messages.
+
+You MAY want to avoid setting a type for commit messages so that they don't show up at all in the changelog - this is probably a good idea. Then, release-please will only include the PR title in the changelog. If, however, you do want to put any commits into the changelog, just format the messages properly and you're good to go!
+
 ## [Semantic-Release Plugin](https://semantic-release.gitbook.io/semantic-release/)
 
-This package does a great job of automating release creation. It bundles release notes and npm/GitHub packaging together. I like that it is flexible on which of the [Angular Commit Message Conventions](https://github.com/angular/angular/blob/main/CONTRIBUTING.md#-commit-message-format#type) it allows. As with other plugins, the scope is completely free-form, so don't worry about having to adhere to Angular's scopes.
+I DO NOT RECOMMEND THIS PRODUCT.
+
+From their notes:
+
+> semantic-release is meant to be executed on the CI environment after every successful build on the release branch.
+
+When configured through GitHub Actions, it runs semantic-release on EVERY push to main. If the push type is a releasable artifact (see the [release config](.releaserc) file) where release is not false, then it will automatically update the changelog and (if configured) create a release. And it will increment the version number. I'm not okay with that, as I like to use multiple builds (the rare fourth number) in my versioning, and while this package does allow that, it does not follow Salesforce's format of 0.0.0-0. It seems to force some character(s) before the build number, and that's not acceptable. Plus, I want to use SFDX to update the build, so this is just weird.
+
+Yes, I could do all my work in a branch and then branch from that branch and keep going until my branch (which I could name my new version) is perfect. Maybe then I would either merge the branch to update the main version or I would create the promoted package version and then merge... it's too complicated.
+
+This package focuses on automating release creation for Git and npm. It bundles release notes and npm/GitHub packaging together. I like that it is flexible on which of the [Angular Commit Message Conventions](https://github.com/angular/angular/blob/main/CONTRIBUTING.md#-commit-message-format#type) it allows. As with other plugins, the scope is completely free-form, so don't worry about having to adhere to Angular's scopes.
 
 I have included my release configuration file [here](/.releaserc).
 
 While the package comes bundled with a few plugins, these are the ones we will use:
+
+These are included in the main package but are included for completeness
 
 - @semantic-release/commit-analyzer
 - @semantic-release/github
 - @semantic-release/release-notes-generator
 - semantic-release
 
+These have to be installed separately
+
 - @semantic-release/changelog
 - @semantic-release/git
-- Note: The first four are bundled together in semantic-release, but I have included them for completeness.
