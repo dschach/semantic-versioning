@@ -4,7 +4,8 @@
   "private": true,
   "description": "David Schach's rules for semantic versioning",
   "scripts": {
-    "semantic-release": "semantic-release"
+    "semantic-release": "semantic-release",
+    "prepare": "husky install"
   },
   "repository": {
     "type": "git",
@@ -26,8 +27,6 @@
   "devDependencies": {
     "@semantic-release/changelog": "^6.0.2",
     "@semantic-release/commit-analyzer": "^9.0.2",
-    "@semantic-release/git": "^10.0.1",
-    "@semantic-release/github": "^8.0.7",
     "@semantic-release/release-notes-generator": "^10.0.3",
     "husky": "^8.0.3",
     "prettier": "^2.8.4",
