@@ -1,36 +1,36 @@
 {
-  "name": "semantic-versioning",
-  "version": "1.1.1",
-  "private": true,
-  "description": "David Schach's rules for semantic versioning",
-  "scripts": {
-    "semantic-release": "semantic-release",
-    "prepare": "husky install"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/dschach/semantic-versioning.git"
-  },
-  "keywords": [
-    "semantic-versioning",
-    "git",
-    "github",
-    "npm",
-    "commits"
-  ],
-  "author": "David Schach",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/dschach/semantic-versioning/issues"
-  },
-  "homepage": "https://github.com/dschach/semantic-versioning#readme",
-  "devDependencies": {
-    "@semantic-release/changelog": "^6.0.2",
-    "@semantic-release/commit-analyzer": "^9.0.2",
-    "@semantic-release/release-notes-generator": "^10.0.3",
-    "husky": "^8.0.3",
-    "prettier": "^2.8.4",
-    "release-please": "^15.8.0",
-    "semantic-release": "^20.1.0"
-  }
+	"name": "semantic-versioning",
+	"version": "1.1.1",
+	"private": true,
+	"description": "David Schach's rules for semantic versioning",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/dschach/semantic-versioning.git"
+	},
+	"keywords": [
+		"semantic-versioning",
+		"git",
+		"github",
+		"npm",
+		"commits"
+	],
+	"author": "David Schach",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/dschach/semantic-versioning/issues"
+	},
+	"homepage": "https://github.com/dschach/semantic-versioning#readme",
+	"devDependencies": {
+		"@semantic-release/changelog": "^6.0.2",
+		"@semantic-release/commit-analyzer": "^9.0.2",
+		"@semantic-release/release-notes-generator": "^10.0.3",
+		"husky": "^8.0.3",
+		"prettier": "^2.8.4",
+		"release-please": "^15.8.0",
+		"semantic-release": "^20.1.0"
+	},
+	"scripts": {
+		"semantic-release": "semantic-release",
+		"prepare": "husky install"
+	}
 }
