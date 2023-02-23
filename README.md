@@ -10,6 +10,16 @@ For more information, see https://github.com/semantic-release/semantic-release -
 
 Based on Angular rules: https://github.com/angular/angular/blob/main/CONTRIBUTING.md#-commit-message-format
 
+## Commit Title Format
+
+All commits that you want considered for releasing must have a certain format. Additionally, there are some tools like commitlint that force every commit message into this format:
+
+```
+type(scope): message
+```
+
+The scope is optional.
+
 ### Type (MY IDEAL SETUP)
 
 Must be one of the following (separated by version increment - see below)
@@ -31,11 +41,13 @@ Patch
 
 "No-Release"
 
-- `build`: Changes that affect the build system, actions, or external dependencies (example scopes: gulp, broccoli, npm, actions).
-- `ci`: Changes to CI configuration files and scripts (examples: CircleCi, SauceLabs). Unless you use an automatic CI system, don't use this type.
-- `chore`: Similar to build; usually refers to bot updates or creating a release. This sometimes won't show up in release notes.
+Note that none of these changes affect the core code of the application (meaning in sfdx terms that nothing here would impact any org or package metadata).
+
+- `build`: Changes that affect the build system, actions, or package/external dependencies (example scopes: gulp, broccoli, npm, actions, sfdx). These are usually local files and packages. Helper apps (such as a changelog application or documentation generation) would go in this type.
+- `ci`: Changes to CI configuration files and scripts (examples: CircleCI, SauceLabs, GitHub Actions). Unless you use an automatic CI system, don't use this type.
+- `chore`: Similar to build; usually refers to bot updates or creating a release. This sometimes won't show up in release notes. This could include releasing a new Salesforce package version.
 - `docs`: Documentation only changes
-- `revert`: Any reversion of a PR/commit. This should not affect the version number. If this is a reversion across releases, then it should be noted as a feat or chore.
+- `revert`: Any reversion of a PR/commit within a given release. This should not affect the version number. If this is a reversion across releases, then it should be noted as a feat/fix.
 
 While these will often result in a patch change (See Release-Please below), I see some conflicting advice in my research. Sure, updating outdated npm packages used for package development do not change the code in the Salesforce package itself, BUT they do affect how development proceeds in the company. And if people just want to wait until they have a "real" code change before releasing an ISV patch/version, then there's nothing wrong with working on documentation only until you have something to release. Sure, you'll have a long changelog, but that's why we break things into sections!
 
@@ -50,7 +62,7 @@ Here are some examples, but you can choose your own:
 - `packaging`: updates for releasing a new package version that are not the creation of the version itself
 - `scripts`: Updated scripts
 - `core`: Central functionality (can often be omitted, as many changes will be 'core')
-- `tests`: Changes to Apex/Jest or other tests
+- `tests`: Changes to Apex/Jest or other tests - should probably not use `test` type if you use this
 - `API`: Custom APIs or integrations. Can also be for updating API versions of Salesforce metadata on a new release.
 - `localization`: translations
 - `security`: If you track profiles and permissions in your Salesforce pipeline, this may be an appropriate scope
@@ -60,6 +72,7 @@ Here are some examples, but you can choose your own:
 - `changelog`: updating the changelog (usually done automatically with a release)
 - `no-release`: Will not be included in determining the version change (currently not in Release-Please)
 - `ApexDox`: Updates to pages included in, or code comment references to, ApexDox. This should usually have a commit title `docs(ApexDox): <whatever was done>`
+- `sfdx`: Updates to sfdx CLI commands
 - `README`: Updating the project README. For updating instructions, use `docs(README)` and if you're running a script to update a release ID for a Salesforce package version, that's `build(README)` or `chore(README)`.
 
 ### Behavior
@@ -138,6 +151,23 @@ Currently, my preferred way to use this (because I know it works) is to use the 
 My biggest gripe with this tool is that if you use merge commits (not squash) then EVERY commit goes into the changelog if it is titled properly. That's just plain annoying. It gives a double-entry for pull requests, so if a dependency i sautomatically updated, there's a line for the PR and for the commit in that PR. (Example: [PR #5](https://github.com/dschach/semantic-versioning/issues/5) as seen in [Version 1.1.0](https://github.com/dschach/semantic-versioning/releases/tag/v1.1.0)).
 
 I fully admit that the last point is ridiculous because I should just title commits properly only if I want them in the changelog.
+
+### Release-Please tips
+
+It will prefix every release tag with the package name. If you don't specify a package name, it will take one from the sfdx-project file, which can contain spaces. This is not good and will break Release-Please. Instead, be sure to include the `package-name` value in each package's release please config section. Here is a sample for a single package covering an entire repo:
+
+```json
+{
+	"packages": {
+		".": { "release-type": "salesforce", "package-name": "" }
+	},
+	"$schema": "https://raw.githubusercontent.com/googleapis/release-please/main/schemas/config.json"
+}
+```
+
+The Salesforce release strategy doesn't handle multiple package directories well, so it's probably best to keep the name as blank for the top-level package (the entire repo) and then to give a package name to each sub-package. That way, once it works better, you'll get the right tag prefixes. As an example, in my campaign-member-status repo, I could have put "cm-status" as the package name for "force-app" had I wanted to publish multiple packages from the repo.
+
+The place I'm still unclear is that Salesforce pacakges can have spaces in their names, so if the `package` attribute in sfdx-project.json overrides other package names, then I don't know if Release-Please can tag releases properly. This will take more investigation.
 
 #### Release Types and Versioning Strategy
 
