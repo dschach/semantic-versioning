@@ -134,6 +134,17 @@ The content of the commit message body should contain:
 information about the SHA of the commit being reverted in the following format: `This reverts commit <SHA>`,
 a clear description of the reason for reverting the commit message.
 
+## Pull Request types
+
+There are (to over-simplify) two kinds of pull request merge strategies:
+
+- Merge and Rebase types both include every commit somwhere in the repo history. Debating "rewriting history" is beyond this conversation.
+- Squash removes all the commits from each branch and presents only one PR commit in main.
+
+Tools like Gearset (my favorite) use the Merge strategy. This is so it can do cool things like analyzing only commits since the most recent successful commit... which is beyond the scope of this document.
+
+When configuring Dependabot to auto-merge its updates, one may use Squash or Merge -- I like Squash because it looks better in the commit history, but there's nothing wrong with using Merge. Plus, if you're using Gearset, it's best to be consistent.
+
 ## SemVar changes
 
 # Changelog/Release Plugins & Packages
