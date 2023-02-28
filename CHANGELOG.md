@@ -1,5 +1,42 @@
 # Changelog
 
+## [1.2.0](https://github.com/dschach/semantic-versioning/compare/v1.1.1...v1.2.0) (2023-02-28)
+
+
+### Features
+
+* **commitlint:** Configure commitlint ([3f06ed9](https://github.com/dschach/semantic-versioning/commit/3f06ed970d3498c71d0101337451ce86644f501b))
+* **husky:** Install and set up husky ([023dd79](https://github.com/dschach/semantic-versioning/commit/023dd7966e9438f1091ee50d65637cf147a6aa6f))
+* **sfdx:** Add sfdx nature to project ([ec3e9cf](https://github.com/dschach/semantic-versioning/commit/ec3e9cfba5ceeda3e36638431944209d79807541))
+
+
+### Bug Fixes
+
+* Delete sfdx-project, as not needed ([fd9e076](https://github.com/dschach/semantic-versioning/commit/fd9e076fd70412f9179e094c4001c957ba835c96))
+* **release-please:** Remove JSON comments ([ee569fb](https://github.com/dschach/semantic-versioning/commit/ee569fb6892f487f0dfbffc87e4272428dedaf2d))
+* **release-please:** Remove sub-project config ([32a411a](https://github.com/dschach/semantic-versioning/commit/32a411a92132d918ff0b6ad5e2eba9839bde1f47))
+
+
+### Continuous Integration
+
+* **dependabot:** Change gh-action to ci ([eadd400](https://github.com/dschach/semantic-versioning/commit/eadd400d5ba4da5cd8305df9adb86aec4cdd40d5))
+
+
+### Build System
+
+* **dependabot:** Auto-approve Dependabot ([24723c3](https://github.com/dschach/semantic-versioning/commit/24723c3e8b360a66938482f290d621e9c9907943))
+* **dependabot:** Include scope automatically ([f4a93c9](https://github.com/dschach/semantic-versioning/commit/f4a93c94db2a6e762ec8f1ad7526b7b1c29f0b11))
+* **deps-dev:** Bump semantic-release from 20.1.0 to 20.1.1 ([172bbba](https://github.com/dschach/semantic-versioning/commit/172bbba4586cc4e532f027c675cb5f32ea41db67))
+* **deps-dev:** Bump semantic-release from 20.1.0 to 20.1.1 ([#10](https://github.com/dschach/semantic-versioning/issues/10)) ([7baee11](https://github.com/dschach/semantic-versioning/commit/7baee110ecf87e1b23c51ca5cb806326a04a934f))
+
+
+### Documentation
+
+* **README:** Merge strategies ([5dd8b72](https://github.com/dschach/semantic-versioning/commit/5dd8b7290c8ace1a4ecae601722b5646819c0dda))
+* **README:** R-p can make release automatically ([a57f2d9](https://github.com/dschach/semantic-versioning/commit/a57f2d99bbc73f29e1e9cf5aa2a223b70f62c776))
+* **README:** Update README ([18b1665](https://github.com/dschach/semantic-versioning/commit/18b16656a7f6f9cf2fb50a66b4374ec8cc50c946))
+* **README:** Update README ([b18a89b](https://github.com/dschach/semantic-versioning/commit/b18a89bca655bb975e540dbe8462d5c88c139aff))
+
 ## [1.1.1](https://github.com/dschach/semantic-versioning/compare/v1.1.0...v1.1.1) (2023-02-16)
 
 
