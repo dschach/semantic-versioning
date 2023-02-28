@@ -1,6 +1,5 @@
 {
 	"packages": {
-		"force-app": { "changelog-path": "CHANGELOG.md", "release-type": "salesforce", "prerelease": false },
 		".": { "changelog-path": "CHANGELOG.md", "release-type": "simple", "prerelease": false }
 	},
 	"plugins": [{ "type": "sentence-case" }],
