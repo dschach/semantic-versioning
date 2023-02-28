@@ -8,11 +8,9 @@
 	"bump-minor-pre-major": false,
 	"bump-patch-for-minor-pre-major": false,
 	"draft": false,
-	// default to prerelease until we set the individual package to false
 	"prerelease": true,
 	"$schema": "https://raw.githubusercontent.com/googleapis/release-please/main/schemas/config.json",
 	"extra-files": [{ "type": "json", "path": "package.json", "jsonpath": "$.version" }],
-	// used for monorepos or sfdx projects with multiple package directories
 	"separate-pull-requests": true,
 	"changelog-sections": [
 		{ "type": "feat", "section": "Features", "hidden": false },
