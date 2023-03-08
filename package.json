@@ -26,7 +26,7 @@
 		"@semantic-release/release-notes-generator": "^10.0.3",
 		"husky": "^8.0.3",
 		"prettier": "^2.8.4",
-		"release-please": "^15.8.0",
+		"release-please": "^15.8.1",
 		"semantic-release": "^20.1.1"
 	},
 	"scripts": {
