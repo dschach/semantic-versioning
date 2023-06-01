@@ -23,7 +23,7 @@
 	"devDependencies": {
 		"@semantic-release/changelog": "^6.0.3",
 		"@semantic-release/commit-analyzer": "^9.0.2",
-		"@semantic-release/release-notes-generator": "^10.0.3",
+		"@semantic-release/release-notes-generator": "^11.0.2",
 		"husky": "^8.0.3",
 		"prettier": "^2.8.8",
 		"release-please": "^15.11.0",
