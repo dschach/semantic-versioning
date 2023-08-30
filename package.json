@@ -24,7 +24,7 @@
 		"@semantic-release/changelog": "^6.0.3",
 		"@semantic-release/commit-analyzer": "^10.0.4",
 		"@semantic-release/git": "^10.0.1",
-		"@semantic-release/release-notes-generator": "^11.0.6",
+		"@semantic-release/release-notes-generator": "^11.0.7",
 		"husky": "^8.0.3",
 		"prettier": "^3.0.3",
 		"release-please": "^15.13.0",
