@@ -28,6 +28,10 @@
 						"release": false
 					},
 					{
+						"scope": "no-ci",
+						"release": false
+					},
+					{
 						"type": "build",
 						"release": false
 					},
@@ -94,7 +98,7 @@
 		[
 			"@semantic-release/changelog",
 			{
-				"changelogFile": "CHANGELOG.md"
+				"changelogFile": "CHANGELOG_SR.md"
 			}
 		],
 		[
