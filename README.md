@@ -53,6 +53,8 @@ While these will often result in a patch change (See Release-Please below), I se
 
 So my conclusion is that "No-Release" is just a way of thinking about very minor changes that are, technically, a part of a company/org's metadata, and that metadata can be expanded to include documentation and build extensions, etc. I'm happy to be flexible on that.
 
+Having said all that, the devil is in the details for each package, so read on below!
+
 ### Scope
 
 Here are some examples, but you can choose your own:
@@ -212,17 +214,23 @@ You MAY want to avoid setting a type for commit messages so that they don't show
 
 ## [Semantic-Release Plugin](https://semantic-release.gitbook.io/semantic-release/)
 
-I DO NOT RECOMMEND THIS PRODUCT.
+I ONLY RECOMMEND THIS PRODUCT WITH SERIOUS HESITATIONS
 
 From their notes:
 
 > semantic-release is meant to be executed on the CI environment after every successful build on the release branch.
 
+I find that with Salesforce projects, we push to `main` quite a bit, and then deploy to Production as desired, so this would not work - our goal should be a release on-demand.
+
 When configured through GitHub Actions, it runs semantic-release on EVERY push to main. If the push type is a releasable artifact (see the [release config](.releaserc) file) where release is not false, then it will automatically update the changelog and (if configured) create a release. And it will increment the version number. I'm not okay with that, as I like to use multiple builds (the rare fourth number) in my versioning, and while this package does allow that, it does not follow Salesforce's format of 0.0.0-0. It seems to force some character(s) before the build number, and that's not acceptable. Plus, I want to use SFDX to update the build, so this is just weird.
 
 Yes, I could do all my work in a branch and then branch from that branch and keep going until my branch (which I could name my new version) is perfect. Maybe then I would either merge the branch to update the main version or I would create the promoted package version and then merge... it's too complicated.
 
+> However, because GitHub Actions can be changed to run on a button-click (workflow-actions) it may be possible to run each release manually.
+
 This package focuses on automating release creation for Git and npm. It bundles release notes and npm/GitHub packaging together. I like that it is flexible on which of the [Angular Commit Message Conventions](https://github.com/angular/angular/blob/main/CONTRIBUTING.md#-commit-message-format#type) it allows. As with other plugins, the scope is completely free-form, so don't worry about having to adhere to Angular's scopes.
+
+While Salesforce projects won't release to npm, we can avoid doing that and can focus on the release creation and package creation.
 
 I have included my release configuration file [here](/.releaserc).
 
@@ -239,3 +247,23 @@ These have to be installed separately
 
 - @semantic-release/changelog
 - @semantic-release/git
+
+Let's look at each and see what it does:
+
+### semantic-release
+
+### @semantic-release/commit-analyzer
+
+This one looks at all your commits. It's REALLY important because it decides which commit messages go into the release as important changes.
+
+### @semantic-release/github
+
+### @semantic-release/release-notes-generator
+
+### @semantic-release/changelog
+
+### @semantic-release/git
+
+### Advantages
+
+The setup for `semantic-release` is definitely easier than `release-please`, especially if you're installing this late in the game and have already been using something else, but I may have found a way to get release-please to recognize the old releases - as long as your tags are all formatted properly.
