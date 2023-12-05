@@ -11,7 +11,6 @@ jobs:
       - uses: google-github-actions/release-please-action@v4
         id: release
         with:
-          command: manifest
           token: ${{secrets.ADMIN_RELEASE_TOKEN}}
       - run: echo "A release was created."
         if: ${{ steps.release.outputs.releases_created }}
