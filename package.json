@@ -26,7 +26,7 @@
 		"@semantic-release/git": "^10.0.1",
 		"@semantic-release/release-notes-generator": "^12.1.0",
 		"husky": "^8.0.3",
-		"prettier": "^3.2.2",
+		"prettier": "^3.2.3",
 		"release-please": "^16.7.0",
 		"semantic-release": "^22.0.12"
 	},
