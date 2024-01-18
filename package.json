@@ -28,7 +28,7 @@
 		"husky": "^8.0.3",
 		"prettier": "^3.2.4",
 		"release-please": "^16.7.0",
-		"semantic-release": "^22.0.12"
+		"semantic-release": "^23.0.0"
 	},
 	"scripts": {
 		"semantic-release": "semantic-release",
