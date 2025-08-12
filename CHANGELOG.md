@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.2.1](https://github.com/dschach/semantic-versioning/compare/v1.2.0...v1.2.1) (2024-06-07)
+
+
+### Build System
+
+* **@semantic-release/commit-analyzer:** Bump @semantic-release/commit-analyzer from 12.0.0 to 13.0.0 ([#112](https://github.com/dschach/semantic-versioning/issues/112)) ([92e395b](https://github.com/dschach/semantic-versioning/commit/92e395b131aafa0db53cae7d50646adcddd06ca7))
+* **@semantic-release/release-notes-generator:** Bump @semantic-release/release-notes-generator from 13.0.0 to 14.0.0 ([#113](https://github.com/dschach/semantic-versioning/issues/113)) ([0aec95c](https://github.com/dschach/semantic-versioning/commit/0aec95c1531922aba808afd5b0b9ad6307b3fb9a))
+* **prettier:** Bump prettier from 3.2.5 to 3.3.0 ([#110](https://github.com/dschach/semantic-versioning/issues/110)) ([ccc56ae](https://github.com/dschach/semantic-versioning/commit/ccc56aeef2cef8b0d73a6d1a916c4d1ff09dda32))
+* **prettier:** Bump prettier from 3.3.0 to 3.3.1 ([#114](https://github.com/dschach/semantic-versioning/issues/114)) ([5f871c6](https://github.com/dschach/semantic-versioning/commit/5f871c6e70513d6f6a1d832a18561cd0cd4476cc))
+* **release-please:** Bump release-please from 16.10.2 to 16.12.0 ([#115](https://github.com/dschach/semantic-versioning/issues/115)) ([c4b1461](https://github.com/dschach/semantic-versioning/commit/c4b1461a30048202e878527a7c20db0792160e7d))
+* **semantic-release:** Bump semantic-release from 23.0.8 to 23.1.1 ([#109](https://github.com/dschach/semantic-versioning/issues/109)) ([cddc243](https://github.com/dschach/semantic-versioning/commit/cddc243b920d77e127ea7166870667f4ce553e55))
+* **semantic-release:** Bump semantic-release from 23.1.1 to 24.0.0 ([#111](https://github.com/dschach/semantic-versioning/issues/111)) ([d3538e6](https://github.com/dschach/semantic-versioning/commit/d3538e67e1efdc89ba1f12d7e3f7a3b374eea9cc))
+
 ## [1.2.0](https://github.com/dschach/semantic-versioning/compare/v1.1.1...v1.2.0) (2024-03-25)
 
 
